@@ -1,0 +1,16 @@
+<div class="modal-bg"></div>
+<div class="lb-wrapper">
+  <div class="loading"></div>
+  <div class="lightbox-wrapper lightbox-vertical-wrapper">
+    <div class="lightbox-wrapper lightbox-horizontal-wrapper">
+      <div class="lightbox">
+        <nav>
+          <% if(nav.current > 1) { %><a class="prev"><span></span></a><% } %>
+          <% if(nav.current < nav.total ) { %><a class="next"><span></span></a><% } %>
+          <a class="close"></a>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+.chute-asset {
+  .meta {
+    margin: 12px 0 18px;
+
+    .caption {
+      img.avatar {
+        display: block;
+        width:40px;
+        height:40px;
+        margin:0px 12px 0 0;
+        float: left;
+        border: $wall-item-image-border;
+        margin:0px 6px 6px 0;
+      }
+
+      span.username {
+        font-weight: bold;
+        display: block;
+        line-height:40px;
+      }
+
+      p {
+        margin-top:0;
+        display: block;
+        word-wrap: break-word;
+        font-family: $font-base;
+        font-weight: normal;
+        font-size: $font-size;
+        line-height: $line-height;
+        clear:both;
+      }
+    }
+
+    .service {
+      float: right;
+      margin-left:6px;
+    }
+  }
+
+  .like {
+    display: $like-display;
+    cursor: pointer;
+    width: 45px;
+    height: 36px;
+    margin-top: 2px;
+    float:right;
+    text-align:center;
+    .ico {
+      display:inline-block;
+      background-image: url('images/vote.png');
+      width:18px;
+      height:18px;
+      background-size:18px 18px;
+    }
+    .text {
+      display:block;
+      margin-top:0px;
+      clear:both;
+      color:#bdc3c7;
+      font-size:11px;
+      line-height:1em;
+      font-weight:bold;
+      .vote, .unvote {
+        display:none;
+        text-transform: uppercase;
+      }
+      .likes-number {
+        display:block;
+      }
+    }
+    &:hover {
+      .ico {
+        background-image: url('images/vote-active.png');
+      }
+      .text {
+        color:#2ecc71;
+        .vote {
+          display:block;
+        }
+        .likes-number {
+          display:none;
+        }
+      }
+    }
+    &.active {
+      .ico {
+        background-image: url('images/vote-active.png');
+      }
+      .text {
+        color:#2ecc71;
+      }
+      &:hover {
+        .unvote {
+          display:block;
+        }
+        .vote, .likes-number {
+          display:none;
+        }
+      }
+    }
+  }
+
+  .sharing {
+    display:table;
+    width:100%;
+    border-collapse: collapse;
+
+    a {
+      display:table-cell;
+      width:auto;
+      text-align:center;
+      height:30px;
+      border-top:1px solid #dcdcdc;
+      border-left:1px solid #dcdcdc;
+      &:first-child {
+        border-left:0;
+      }
+      span {
+        display:inline-block;
+        width:30px;
+        height:30px;
+        background:url("images/lightbox-sharing-sprite.png") no-repeat;
+        opacity:.6;
+      }
+      &.facebook {
+        span {
+          background-position:0 0;
+        }
+      }
+
+      &.pinterest {
+        span {
+          background-position:0 -90px;
+        }
+      }
+      &.twitter {
+        span {
+          background-position:0 -30px;
+        }
+      }
+      &.tumblr {
+        span {
+          background-position:0 -60px;
+        }
+      }
+
+      &:hover {
+        span {
+          opacity: $lightbox-sharing-hover-opacity;
+        }
+      }
+
+      i {
+        font-size: 14px;
+      }
+    }
+  }
+}
+

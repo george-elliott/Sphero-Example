@@ -1,0 +1,47 @@
+{
+    "container": "div.chute-container",
+    "albums": {
+        "popular": "",
+        "recent": "",
+        "picks": ""
+    },
+    
+    "analytics": {
+        "apiKey": ""
+    },
+    
+    "mediachooser": {
+        "clientId": "4f0b30a938ecef2020000003",
+        "album": ""
+    },
+
+    "facebook" : {
+        "appId": ""
+    },
+    
+    "dependencies": [
+        "share",
+        "display/masonry",
+        "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css",
+        "//vjs.zencdn.net/4.1/video-js.css",
+        "//static.getchute.com/js/chute.chooser.js"
+    ],
+    
+    "s3": {
+        "key": "AKIAJHAREFXBAH6SBLPA",
+        "secret": "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",
+        "bucket": "cdn.getchute.com",
+        "access": "public-read",
+        "dest": "displays/sphero"
+    },
+    
+    "environments": {
+        "production": {
+            "albums": {
+                "popular": "",
+                "recent": "",
+                "picks": ""
+            }
+        }
+    }
+}

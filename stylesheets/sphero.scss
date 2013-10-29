@@ -1,0 +1,223 @@
+@import "compass";
+@import "compass/reset";
+@import "custom.scss";
+@import "item_view";
+.hub, .lightbox {
+  -webkit-text-size-adjust: 100%;
+  *, *:before, *:after {
+    @include box-sizing('border-box');
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  italic {
+    font-style: italic;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .clearfix:after {
+    clear: both;
+  }
+
+  .clearfix {
+    zoom: 1;
+  }
+
+
+}
+
+.hub {
+  line-height: $line-height;
+  font-family: $font-base;
+  font-size: $font-size;
+  color: $color;
+  margin: 0 10px;
+
+  @include breakpoint($oversize) {
+    margin: 0 auto;
+    width: $hub-max-width;
+  }
+
+  p {
+    color: $color;
+    margin: $paragraph-indent;
+  }
+
+  a {
+    color: $link-color;
+    text-decoration: $link-decoration;
+    &:hover {
+      color: $link-hover-color;
+      text-decoration:$link-hover-decoration;
+    }
+  }
+
+
+  .header {
+    background: #CCC;
+    height: 150px;
+    position: relative;
+
+    .logo {
+      display: block;
+      text-indent: -2000px;
+      overflow: hidden;
+      width: 200px;
+      height: 80px;
+      background: #666 no-repeat left top;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
+  }
+
+  .footer {
+    color: $footer-color;
+    font-size: $font-size;
+    text-align: right;
+    clear:both;
+  }
+
+  .tabs {
+    margin-top: 20px;
+
+    .tab {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  a.button, button, input[type=submit] {
+    display: inline-block;
+    width: 130px;
+    padding: 0px 10px;
+    height: $button-height;
+    line-height: $button-height;
+    font-family: $font-base;
+    font-size: $font-size;
+    color: $button-color;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    background: $button-background-fallback;
+    @include background($button-background);
+    @include box-shadow($button-box-shadow);
+    @include text-shadow($button-text-shadow);
+    @include border-radius($button-border-radius);
+
+    &:active {
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  .panel {
+    margin: 20px auto;
+    // upload
+    .upload {
+      float: none;
+      text-align: center;
+
+      @include breakpoint($wider) {
+        float: right;
+      }
+
+    }
+    // menu
+    .tabs-menu {
+      float:none;
+      background: $menu-background;
+      margin: 0 0 10px 0;
+
+      @include breakpoint($wider) {
+        float: left;
+        margin:0;
+        min-width: 400px;
+      }
+
+      li {
+        background: $menu-item-background;
+        display: block;
+        text-align: center;
+        padding: 0px;
+        min-height: $menu-height;
+        line-height: $menu-height;
+        //@include box-shadow(inset 0 1px 3px rgba(black, .25));
+        border: $menu-item-border;
+        width: 100%;
+        float:none;
+
+        @include breakpoint($bigphone) {
+          float:left;
+          width: 33%;
+
+          &.active {
+            width:34%;
+          }
+        }
+
+        @include breakpoint($wider) {
+          width:auto;
+          float:left;
+          &.active {
+            width:auto;
+          }
+        }
+
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: 0px 10px;
+          color: $menu-item-color;
+          font-family: $font-base;
+          font-size: $menu-font-size;
+          text-decoration: none;
+          @include text-shadow($menu-item-text-shadow);
+        }
+
+        &:hover {
+          border: $menu-item-hover-border;
+          @include background($menu-item-hover-background);
+          @include box-shadow(none);
+
+          a {
+            color: $menu-item-hover-color;
+            @include text-shadow($menu-item-hover-text-shadow);
+          }
+        }
+
+        &.active {
+          border: $menu-item-active-border;
+          @include background($menu-item-active-background);
+          @include box-shadow(none);
+
+          a {
+            color: $menu-item-active-color;
+            @include text-shadow($menu-item-active-text-shadow);
+          }
+        }
+      }
+    }
+  }
+
+  @import "wall.scss";
+  @import "tabs/recent.scss";
+  @import "tabs/popular.scss";
+  @import "tabs/picks.scss";
+
+}
+
+@import "lightbox.scss";

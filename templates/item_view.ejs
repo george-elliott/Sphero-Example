@@ -1,0 +1,35 @@
+<div class="chute-asset">
+  <div class="asset-container">
+    <div class="asset">
+      <img src="<%= url %>/<%= size %>">
+      <% if(typeof video_url !== 'undefined') { %>
+      <video id="video-<%= video.id %>" class="video-js vjs-default-skin" width="<%= video.width %>" height="<%= video.height %>">
+        <source src="<%= video_url %>" type="video/mp4">
+      </video>
+      <% } %>
+    </div>
+  </div>
+
+
+  <div class="meta clearfix">
+    <div class="caption">
+      <div class="like <% if(this.model.hearted()) { %>active<% } %>">
+        <span class="ico"></span>
+        <span class="text">
+          <span class="likes-number"><%= hearts %></span>
+          <span class="vote">Vote</span>
+          <span class="unvote">Unvote</span>
+        </span>
+      </div>
+      <img src="<%= user.avatar %>" class="avatar">
+      <span class="username"><%= username || 'anonymous' %></span>
+      <p><%= caption %></p>
+    </div>
+  </div>
+  <div class="sharing">
+    <a href="<%= facebook_share_url %>" class="facebook" target="_blank"><span></span></a>
+    <a href="<%= twitter_share_url %>" class="twitter" target="_blank"><span></span></a>
+    <a href="<%= pinterest_share_url %>" class="pinterest" target="_blank"><span></span></a>
+    <a href="<%= tumblr_share_url %>" class="tumblr" target="_blank"><span></span></a>
+  </div>
+</div>
