@@ -27,9 +27,7 @@ var ItemView = Chute.View.extend({
     this.listenTo(this, 'render', _.bind(function() {
       var isLightbox = $(this.container).hasClass("lightbox");
 
-
       if(this.model.get("type") == 'video' && (isLightbox || detect.isMobile())) {
-        console.log('is video and should be shown');
         try {
           console.log('trying video');
           this.video = videojs('video-' + this.model.get('id'), {
@@ -38,40 +36,50 @@ var ItemView = Chute.View.extend({
             preload: false
           });
 
-
-
           this.video.volume(0);
           this.bindings.image.hide();
           this.video.isPaused = true;
 
           this.video.dimensions(this.bindings.asset.outerWidth(),this.bindings.asset.outerWidth());
         } catch(e) {
-          console.log('error', e);
-          console.log('hello');
-          //this.$el.imagesLoaded(_.bind(this.show, this, 'image'));
           this.bindings.image.show();
           this.bindings.video.hide();
-          console.log(this.video);
           this.video.dispose();
           this.video.hide();
         }
 
-        console.log(this.video);
-        window.video = this.video;
 
+        // video events
         this.video.on('error', _.bind(function(){
-          console.log('video error ha');
-          console.log(this.video);
           this.bindings.image.show();
           this.video.hide();
-          //this.$el.imagesLoaded(_.bind(this.show, this, 'image'));
         }, this));
+
+        this.video.on('play', _.bind(function() {
+          this.$el.find('nav').hide();
+          this.video.isPaused = false;
+        }, this));
+
+        this.video.on('pause', _.bind(function() {
+          this.$el.find('nav').show();
+          this.video.bigPlayButton.show();
+          this.video.isPaused = true;
+        }, this));
+
+        this.video.on('ended', _.bind(function() {
+          this.$el.find('nav').show();
+          this.video.isPaused = true;
+        }, this));
+
 
       } else {
         this.bindings.video.hide();
       }
     }, this));
 
+
+    _.bindAll(this, 'keyboardAction');
+    $(document).on('keyup', this.keyboardAction);
 
 
     var share = new Share({
@@ -140,6 +148,22 @@ var ItemView = Chute.View.extend({
       this.video.pause();
       this.video.dispose();
       delete this.video;
+    }
+
+    $(document).off('keyup', this.keyboardAction);
+  },
+  keyboardAction: function(e) {
+    switch(e.which) {
+      case 32:
+        if(this.video) {
+          if(this.video.isPaused) {
+            this.video.play();
+          } else {
+            this.video.pause();
+          }
+        }
+        break;
+      default: e.stopPropagation();
     }
   }
 
