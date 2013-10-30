@@ -66,6 +66,24 @@ var Lightbox = Chute.View.extend({
       this.bindings.nav.controls.prependTo(this.asset.bindings.asset);
       this.bindings.lightbox.hide();
 
+      // add loading
+
+      // video event
+      if(this.asset.video) {
+        this.asset.video.on('play', _.bind(function() {
+          this.bindings.nav.controls.hide();
+        }, this));
+
+        this.asset.video.on('pause', _.bind(function() {
+          this.bindings.nav.controls.show();
+          this.asset.video.bigPlayButton.show();
+        }, this));
+
+        this.asset.video.on('ended', _.bind(function() {
+          this.bindings.nav.controls.show();
+        }, this));
+      }
+
       this.$el.imagesLoaded(_.bind(function(){
 
         this.bindings.lightbox.show().css('visibility', 'hidden');
@@ -158,6 +176,22 @@ var Lightbox = Chute.View.extend({
     this.asset.destroy();
     this.asset = new ItemView({model: this.model, parent: this, container: this.bindings.lightbox, size: '600xauto' });
     this.asset.render();
+    this.bindings.nav.controls.show();
+    // video event
+    if(this.asset.video) {
+      this.asset.video.on('play', _.bind(function() {
+        this.bindings.nav.controls.hide();
+      }, this));
+
+      this.asset.video.on('pause', _.bind(function() {
+        this.bindings.nav.controls.show();
+        this.asset.video.bigPlayButton.show();
+      }, this));
+
+      this.asset.video.on('ended', _.bind(function() {
+        this.bindings.nav.controls.show();
+      }, this));
+    }
     this.bindings.nav.controls.prependTo(this.asset.bindings.asset);
     this.preload();
     this.debouncedResize();

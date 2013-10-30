@@ -18,7 +18,7 @@ var Hub = Chute.View.extend({
     this.bindings.tabs.filter('[data-tab-name="' + name + '"]').addClass('active');
     this.activeTab = name;
 
-    //analytics.pageview();
+    analytics.pageview();
     analytics.track('Opened a ' + name + ' tab');
 
     // hide address panel on mobile
@@ -45,12 +45,59 @@ var Hub = Chute.View.extend({
 
     var chooser = new Chute.Chooser({
       client_id: Display.mediachooser.clientId,
-      album: Display.mediachooser.album
+      album: Display.mediachooser.album,
+      steps: ['styles', 'selector', 'profile'],
+      stepOptions: {
+        profile: {
+          title : "Contact information",
+          next : "Next",
+          fields: [{
+            type: "text",
+            name: "name",
+            label: "Name",
+            required: true
+          }, {
+            type: "text",
+            name: "email",
+            label: "Email",
+            required: true,
+            match: "^([^@\\s]+)@((?:[-a-z0-9]+\\.)+[a-z]{2,})$"
+          }, {
+            type: "checkbox",
+            name: "agree",
+            label: "I agree with <a href=\"\" target=\"_blank\">Terms & Conditions</a>",
+            required: true
+          }]
+        },
+        selector: {
+          title : "Select Your Photos",
+          next : "Next",
+          services : ["upload", "facebook", "flickr", "google", "instagram"]
+        },
+        thanks: {
+          title: "Upload successful",
+          next: "Done",
+          text: "Thank you, your submission was succcessful."
+        }
+      }
+    });
+
+    chooser.on('before:media:submission', function(data, done) {
+      _.each(data.media, function(asset) {
+        if (asset.account_username === '') {
+          asset.account_username = data.profile.name;
+          delete asset.account_shortcut;
+        }
+      });
+      done(data);
     });
 
     chooser.on('complete', function(response){
+      chooser.goToStep('thanks');
+    });
+
+    chooser.on('before:thanks:change', function() {
       chooser.close();
-      // todo: add thank you message or add images to display
     });
 
     chooser.show();

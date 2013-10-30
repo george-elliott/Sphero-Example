@@ -5,7 +5,8 @@ var ItemView = Chute.View.extend({
     'hearts': 'span.likes-number',
     'asset': '.asset',
     'image': '.asset img',
-    'video': '.asset video'
+    'video': '.asset video',
+    'nav': 'nav'
   },
   events: {
     'click .like': 'like',
@@ -27,8 +28,10 @@ var ItemView = Chute.View.extend({
       var isLightbox = $(this.container).hasClass("lightbox");
 
 
-      if((isLightbox || detect.isMobile()) && this.model.get("type") == 'video') {
+      if(this.model.get("type") == 'video' && (isLightbox || detect.isMobile())) {
+        console.log('is video and should be shown');
         try {
+          console.log('trying video');
           this.video = videojs('video-' + this.model.get('id'), {
             controls: true,
             autoplay: false,
@@ -36,17 +39,50 @@ var ItemView = Chute.View.extend({
           });
 
 
+
           this.video.volume(0);
           this.bindings.image.hide();
 
           this.video.dimensions(this.bindings.asset.outerWidth(),this.bindings.asset.outerWidth());
         } catch(e) {
+          console.log('error', e);
+          console.log('hello');
           //this.$el.imagesLoaded(_.bind(this.show, this, 'image'));
           this.bindings.image.show();
           this.bindings.video.hide();
+          console.log(this.video);
+          this.video.dispose();
+          this.video.hide();
         }
+
+        console.log(this.video);
+        window.video = this.video;
+
+        this.video.on('error', _.bind(function(){
+          console.log('video error ha');
+          console.log(this.video);
+          this.bindings.image.show();
+          this.video.hide();
+          //this.$el.imagesLoaded(_.bind(this.show, this, 'image'));
+        }, this));
+
+        // video event
+        this.video.on('play', _.bind(function() {
+          console.log('play');
+          console.log(this.bindings);
+          this.bindings.nav.hide();
+        }, this));
+
+        this.video.on('ended', _.bind(function() {
+          console.log('play');
+          this.bindings.nav.show();
+        }, this));
+
+      } else {
+        this.bindings.video.hide();
       }
     }, this));
+
 
 
     var share = new Share({
@@ -109,6 +145,13 @@ var ItemView = Chute.View.extend({
       asset: this.model.get('shortcut'),
       url: this.model.get('url')
     });
+  },
+  remove: function() {
+    if(this.video) {
+      this.video.pause();
+      this.video.dispose();
+      delete this.video;
+    }
   }
 
 });

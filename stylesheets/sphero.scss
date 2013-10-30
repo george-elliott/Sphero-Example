@@ -64,20 +64,26 @@
 
   .header {
     background: #CCC;
-    height: 150px;
+    height: 300px;
     position: relative;
 
     .logo {
-      display: block;
-      text-indent: -2000px;
-      overflow: hidden;
-      width: 200px;
-      height: 80px;
-      background: #666 no-repeat left top;
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
+      display:none;
     }
+
+    .boxes {
+      div {
+        float: left;
+        margin: 0 3%;
+        height: 160px;
+        width: 215px;
+        position: relative;
+        top: 120px;
+        padding: 10px;
+        background: #fff;
+      }
+    }
+
   }
 
   .footer {
@@ -130,10 +136,6 @@
       float: none;
       text-align: center;
 
-      @include breakpoint($wider) {
-        float: right;
-      }
-
     }
     // menu
     .tabs-menu {
@@ -142,9 +144,7 @@
       margin: 0 0 10px 0;
 
       @include breakpoint($wider) {
-        float: left;
-        margin:0;
-        min-width: 400px;
+        text-align:center;
       }
 
       li {
@@ -169,8 +169,10 @@
         }
 
         @include breakpoint($wider) {
-          width:auto;
-          float:left;
+          display: inline-block;
+          margin: 0 10px;
+          width: auto;
+          float: none;
           &.active {
             width:auto;
           }

@@ -12,8 +12,6 @@
     //= require utils/facebook
     //= require hub
 
-    Display.collections.popular.option('sort', 'hot');
-
     Display.hub = new Hub({
       container: Display.container
     });
@@ -36,12 +34,11 @@
 
     var Router = Backbone.Router.extend({
       routes: {
-        'popular(/:shortcut)': 'popular',
         'recent(/:shortcut)': 'recent',
         'picks(/:shortcut)': 'picks',
         'terms': 'terms',
-        ':shortcut': 'popular',
-        '': 'popular'
+        ':shortcut': 'recent',
+        '': 'recent'
       },
 
       rendered: {},
@@ -58,31 +55,6 @@
         });
       },
 
-      popular: function(shortcut) {
-        if(shortcut) this.openLightbox({ album: Display.albums.popular, asset: shortcut }, 'popular');
-
-        Display.hub.setActiveTab('popular');
-
-        if(this.rendered['popular']) return;
-
-        Display.collections.popular.fetch({ remove: false });
-
-        var descriptionItem = new DescriptionWallItem({
-          parent: Display.tabs.popular.wall
-        });
-
-        Display.tabs.popular.wall.views.unshift(descriptionItem);
-
-        Display.tabs.popular.wall.listenTo(Display.tabs.popular.wall.views, 'add', _.after(5, _.once(function(){
-          var staticItem = new StaticWallItem({
-            parent: Display.tabs.popular.wall
-          });
-
-          Display.tabs.popular.wall.views.add(staticItem);
-        })));
-
-        this.rendered['popular'] = true;
-      },
 
       recent: function(shortcut) {
         if(shortcut) this.openLightbox({ album: Display.albums.recent, asset: shortcut }, 'recent');
@@ -92,20 +64,6 @@
         if(this.rendered['recent']) return;
 
         Display.collections.recent.fetch({ remove: false });
-
-        var descriptionItem = new DescriptionWallItem({
-          parent: Display.tabs.recent.wall
-        });
-
-        Display.tabs.recent.wall.views.unshift(descriptionItem);
-
-        Display.tabs.recent.wall.listenTo(Display.tabs.recent.wall.views, 'add', _.after(5, _.once(function(){
-          var staticItem = new StaticWallItem({
-            parent: Display.tabs.recent.wall
-          });
-
-          Display.tabs.recent.wall.views.add(staticItem);
-        })));
 
         this.rendered['recent'] = true;
       },

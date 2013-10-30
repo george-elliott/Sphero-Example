@@ -56,6 +56,13 @@
           display:block;
         }
       }
+      .chute-asset.video {
+        nav {
+          a.prev, a.next {
+            width:20%;
+          }
+        }
+      }
       nav {
         position: absolute;
         top: 0;
@@ -136,6 +143,7 @@
           }
         }
       }
+
       .asset-container {
         background-color: $lightbox-asset-background;
         padding: $lightbox-padding;
@@ -169,6 +177,20 @@
             max-height:500px;
             .vjs-control-bar {
               z-index:10;
+            }
+            .vjs-big-play-button:before {
+              font-size: 3.5em;
+              line-height: 2.8em;
+              padding-left: 10px;
+            }
+            .vjs-big-play-button {
+              width: 10em;
+              height: 10em;
+              margin-top:-5em;
+              margin-left:-5em;
+              left:50%;
+              top:50%;
+              @include border-radius(50%);
             }
           }
           video {
