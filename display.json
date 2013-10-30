@@ -3,7 +3,7 @@
     "albums": {
         "recent": "aiX9aujw",
         "popular": "aiX9aujw",
-        "picks": "aqfXlmnd"
+        "picks": "aqiIynkd"
     },
     
     "analytics": {
@@ -12,7 +12,7 @@
     
     "mediachooser": {
         "clientId": "4f0b30a938ecef2020000003",
-        "album": "aqfWdlaj"
+        "album": "aiX9aujw"
     },
 
     "facebook" : {
@@ -40,7 +40,7 @@
             "albums": {
                 "recent": "aiX9aujw",
                 "popular": "aiX9aujw",
-                "picks": "aqfXlmnd"
+                "picks": "aqiIynkd"
             }
         }
     }

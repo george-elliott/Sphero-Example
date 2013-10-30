@@ -46,10 +46,10 @@ var Hub = Chute.View.extend({
     var chooser = new Chute.Chooser({
       client_id: Display.mediachooser.clientId,
       album: Display.mediachooser.album,
-      steps: ['styles', 'selector', 'profile'],
+      steps: ['customProfile', 'selector', 'thanks'],
       stepOptions: {
-        profile: {
-          title : "Contact information",
+        customProfile: {
+          title : "Profile",
           next : "Next",
           fields: [{
             type: "text",
@@ -63,9 +63,15 @@ var Hub = Chute.View.extend({
             required: true,
             match: "^([^@\\s]+)@((?:[-a-z0-9]+\\.)+[a-z]{2,})$"
           }, {
+            type: "dob",
+            name: "dob",
+            label: "Date of Birth",
+            required: true,
+            match: "^([0-9]){4}-([0-9]){1,2}-([0-9]){1,2}$"
+          }, {
             type: "checkbox",
-            name: "agree",
-            label: "I agree with <a href=\"https://s3.amazonaws.com/cdn.getchute.com/displays/sphero/production/latest/assets/documents/contestrules.pdf\" target=\"_blank\">Terms & Conditions</a>",
+            name: "newsletter",
+            label: "Yes! I'd like to join the Sphero newsletter! (<a href=\"http://www.gosphero.com/privacy/\" target=\"_blank\" style=\"color:black;text-decoration:underline;\">Privacy Policy</a>)",
             required: true
           }]
         },
@@ -74,13 +80,16 @@ var Hub = Chute.View.extend({
           next : "Next",
           services : ["upload", "facebook", "flickr", "google", "instagram"]
         },
-        thanks: {
-          title: "Upload successful",
-          next: "Done",
-          text: "Thank you, your submission was succcessful."
+        thanks : {
+          title : "Thank you",
+          next : "Done",
+          text : "Thank you! Your photos have been successfully uploaded."
         }
       }
     });
+    // add a customized step
+    chooser.step('customProfile', { template: SpheroChooser.Templates.customProfile({}), data: { title: "Profile", next: "Next" } });
+
 
     chooser.on('before:media:submission', function(data, done) {
       _.each(data.media, function(asset) {
