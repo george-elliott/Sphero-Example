@@ -12,6 +12,8 @@
     //= require utils/facebook
     //= require hub
 
+    Display.collections.popular.option('sort', 'hot');
+
     Display.hub = new Hub({
       container: Display.container
     });
@@ -35,6 +37,7 @@
     var Router = Backbone.Router.extend({
       routes: {
         'recent(/:shortcut)': 'recent',
+        'popular(/:shortcut)': 'popular',
         'picks(/:shortcut)': 'picks',
         'terms': 'terms',
         ':shortcut': 'recent',
@@ -66,6 +69,18 @@
         Display.collections.recent.fetch({ remove: false });
 
         this.rendered['recent'] = true;
+      },
+
+      popular: function(shortcut) {
+        if(shortcut) this.openLightbox({ album: Display.albums.recent, asset: shortcut }, 'popular');
+
+        Display.hub.setActiveTab('popular');
+
+        if(this.rendered['popular']) return;
+
+        Display.collections.popular.fetch({ remove: false });
+
+        this.rendered['popular'] = true;
       },
 
       picks: function(shortcut) {

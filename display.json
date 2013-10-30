@@ -2,6 +2,7 @@
     "container": "div.chute-container",
     "albums": {
         "recent": "aiX9aujw",
+        "popular": "aiX9aujw",
         "picks": "aqfXlmnd"
     },
     
@@ -38,6 +39,7 @@
         "production": {
             "albums": {
                 "recent": "aiX9aujw",
+                "popular": "aiX9aujw",
                 "picks": "aqfXlmnd"
             }
         }

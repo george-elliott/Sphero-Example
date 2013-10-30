@@ -82,14 +82,14 @@ var ItemView = Chute.View.extend({
 
     var share = new Share({
       awesm: {
-        campaign: ''
+        campaign: 'sphero-tab'
       },
       url: location.href,
-      caption: '', // second line
+      caption: 'Sphero Tricks', // second line
       asset: this.model.get('url'),
-      text: '',
+      text: 'Show us what you can do with Sphero or create a human-powered trick using anything from a soccer ball to a parkour-wall for the chance to win a Sphero 2.0 and custom trick pack.',
       facebook: {
-        title: '',
+        title: 'You\'ve Got Tricks with Balls',
         redirect: 'http://www.getchute.com/close.html', // closes the window
         appId: '143143919079785' // chute fb
       }

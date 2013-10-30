@@ -65,7 +65,7 @@ var Hub = Chute.View.extend({
           }, {
             type: "checkbox",
             name: "agree",
-            label: "I agree with <a href=\"\" target=\"_blank\">Terms & Conditions</a>",
+            label: "I agree with <a href=\"https://s3.amazonaws.com/cdn.getchute.com/displays/sphero/production/latest/assets/documents/contestrules.pdf\" target=\"_blank\">Terms & Conditions</a>",
             required: true
           }]
         },
