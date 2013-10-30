@@ -42,6 +42,7 @@ var ItemView = Chute.View.extend({
 
           this.video.volume(0);
           this.bindings.image.hide();
+          this.video.isPaused = true;
 
           this.video.dimensions(this.bindings.asset.outerWidth(),this.bindings.asset.outerWidth());
         } catch(e) {
@@ -64,18 +65,6 @@ var ItemView = Chute.View.extend({
           this.bindings.image.show();
           this.video.hide();
           //this.$el.imagesLoaded(_.bind(this.show, this, 'image'));
-        }, this));
-
-        // video event
-        this.video.on('play', _.bind(function() {
-          console.log('play');
-          console.log(this.bindings);
-          this.bindings.nav.hide();
-        }, this));
-
-        this.video.on('ended', _.bind(function() {
-          console.log('play');
-          this.bindings.nav.show();
         }, this));
 
       } else {

@@ -72,15 +72,18 @@ var Lightbox = Chute.View.extend({
       if(this.asset.video) {
         this.asset.video.on('play', _.bind(function() {
           this.bindings.nav.controls.hide();
+          this.asset.video.isPaused = false;
         }, this));
 
         this.asset.video.on('pause', _.bind(function() {
           this.bindings.nav.controls.show();
           this.asset.video.bigPlayButton.show();
+          this.asset.video.isPaused = true;
         }, this));
 
         this.asset.video.on('ended', _.bind(function() {
           this.bindings.nav.controls.show();
+          this.asset.video.isPaused = true;
         }, this));
       }
 
@@ -143,6 +146,15 @@ var Lightbox = Chute.View.extend({
       case 27: this.destroy(); break;
       case 37: this.prevAsset(e); break;
       case 39: this.nextAsset(e); break;
+      case 32:
+        if(this.asset && this.asset.video) {
+          if(this.asset.video.isPaused) {
+            this.asset.video.play();
+          } else {
+            this.asset.video.pause();
+          }
+        }
+        break;
       default: e.stopPropagation();
     }
   },
@@ -178,18 +190,22 @@ var Lightbox = Chute.View.extend({
     this.asset.render();
     this.bindings.nav.controls.show();
     // video event
+    // video event
     if(this.asset.video) {
       this.asset.video.on('play', _.bind(function() {
         this.bindings.nav.controls.hide();
+        this.asset.video.isPaused = false;
       }, this));
 
       this.asset.video.on('pause', _.bind(function() {
         this.bindings.nav.controls.show();
         this.asset.video.bigPlayButton.show();
+        this.asset.video.isPaused = true;
       }, this));
 
       this.asset.video.on('ended', _.bind(function() {
         this.bindings.nav.controls.show();
+        this.asset.video.isPaused = true;
       }, this));
     }
     this.bindings.nav.controls.prependTo(this.asset.bindings.asset);
