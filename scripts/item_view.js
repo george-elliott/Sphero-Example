@@ -5,8 +5,7 @@ var ItemView = Chute.View.extend({
     'hearts': 'span.likes-number',
     'asset': '.asset',
     'image': '.asset img',
-    'video': '.asset video',
-    'nav': 'nav'
+    'video': '.asset video'
   },
   events: {
     'click .like': 'like',
@@ -29,7 +28,6 @@ var ItemView = Chute.View.extend({
 
       if(this.model.get("type") == 'video' && (isLightbox || detect.isMobile())) {
         try {
-          console.log('trying video');
           this.video = videojs('video-' + this.model.get('id'), {
             controls: true,
             autoplay: false,
