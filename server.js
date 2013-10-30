@@ -23,26 +23,32 @@ app.use(function(req, res, next){
       res.end(buffer);
     });
   };
-  
+
   next();
 });
+
 
 if (process.env.NODE_ENV === 'production') {
   var homepage = function(req, res) {
     fs.stat('./index.html', function(err){
       if(! err) return res.with('./index.html');
       res.end(404);
-    });    
+    });
   }
+  app.use("/fonts", express.static(__dirname + '/assets/fonts'));
+  app.use("/assets/images", express.static(__dirname + '/assets/images'));
   app.get('/*', homepage);
   app.post('/*', homepage);  // for FB tab
+
 } else {
   app.get('/', function(req, res){
     fs.stat('./test/index.html', function(err){
-      if(! err) return res.with('./test/index.html');      
+      if(! err) return res.with('./test/index.html');
       res.end(404);
     });
   });
+  app.use("/fonts", express.static(__dirname + '/assets/fonts'));
+  app.use("/assets/images", express.static(__dirname + '/assets/images'));
 }
 
 app.listen(app.get('port'));
