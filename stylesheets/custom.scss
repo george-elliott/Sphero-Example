@@ -25,27 +25,27 @@ $link-hover-decoration:           underline;
 
 // BUTTONS
 $button-height:                   30px;
-$button-background:               #d13e2f; // linear-gradient(#e74c3c, #d13e2f);
+$button-background:               rgb(255, 255, 255); // linear-gradient(#e74c3c, #d13e2f);
 $button-background-fallback:      $button-background; // set to custom if $button-background is a gradient
 $button-color:                    #fff;
 $button-border-radius:            5px;
-$button-text-shadow:              0 1px 1px rgba(black, .4);
-$button-box-shadow:               0 2px 3px rgba(black, .15);
+$button-text-shadow:              none;
+$button-box-shadow:               none;
 
 // MENU
 $menu-height:                     30px;
-$menu-background:                 transparent;
+$menu-background:                 rgb(230, 234, 236);
 $menu-font-size:                  $font-size;
 
-$menu-item-background:            #ccc;
+$menu-item-background:            transparent;
 $menu-item-color:                 #333;
-$menu-item-text-shadow:           0 1px 1px rgba(#fff, 0.4);
-$menu-item-border:                1px solid #ccc;
+$menu-item-text-shadow:           none;
+$menu-item-border:                3px solid #ccc;
 
 $menu-item-active-background:     $button-background;
-$menu-item-active-color:          #fff;
-$menu-item-active-text-shadow:    0 1px 1px #000;
-$menu-item-active-border:         1px solid $button-background;
+$menu-item-active-color:          #000;
+$menu-item-active-text-shadow:    none;
+$menu-item-active-border:         none;
 
 $menu-item-hover-background:      $menu-item-background;
 $menu-item-hover-color:           $menu-item-color;
