@@ -43,15 +43,8 @@
     width: 45px;
     height: 36px;
     margin-top: 2px;
-    float:right;
+    float: right;
     text-align:center;
-    .ico {
-      display:inline-block;
-      background-image: url('images/vote.png');
-      width:18px;
-      height:18px;
-      background-size:18px 18px;
-    }
     .text {
       display:block;
       margin-top:0px;
@@ -66,36 +59,6 @@
       }
       .likes-number {
         display:block;
-      }
-    }
-    &:hover {
-      .ico {
-        background-image: url('images/vote-active.png');
-      }
-      .text {
-        color:#2ecc71;
-        .vote {
-          display:block;
-        }
-        .likes-number {
-          display:none;
-        }
-      }
-    }
-    &.active {
-      .ico {
-        background-image: url('images/vote-active.png');
-      }
-      .text {
-        color:#2ecc71;
-      }
-      &:hover {
-        .unvote {
-          display:block;
-        }
-        .vote, .likes-number {
-          display:none;
-        }
       }
     }
   }
