@@ -15,7 +15,8 @@
     Display.collections.popular.option('sort', 'hot');
 
     Display.hub = new Hub({
-      container: Display.container
+      container: Display.container,
+      BASE: BASE
     });
 
     Display.hub.render();
