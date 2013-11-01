@@ -36,7 +36,6 @@
 }
 
 .hub {
-  background: #e6eaec;
   line-height: $line-height;
   font-family: $font-base;
   font-size: $font-size;
@@ -132,7 +131,9 @@
   }
 
   .panel {
-    margin: 20px auto;
+    width: 100%;
+    background: #e6eaec;
+    margin: 0 20px 0 0;
     // upload
     .upload {
       float: none;

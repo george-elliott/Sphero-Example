@@ -112,10 +112,11 @@
   }
 
   .chute-asset {
+    background: rgb(251, 248, 247);
     .asset {
       width: 100%;
       position:relative;
-      padding: $wall-item-padding $wall-item-padding 0;
+      padding: 0;
       img {
         border: $wall-item-image-border;
         cursor: pointer;
@@ -124,7 +125,7 @@
     }
 
     .meta {
-      margin: 12px 0 18px;
+      margin: 10px 0 0 0;
       padding: 0 $wall-item-padding;
 
       .caption {
