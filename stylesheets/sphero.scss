@@ -60,8 +60,15 @@
       text-decoration:$link-hover-decoration;
     }
   }
-
-
+  h1 {
+    opacity: .6;
+    margin: 5% 0 0 10%;
+    font-size: 200%;
+  }
+  hr {
+    opacity: .6;
+    width: 80%;
+  }
   .header {
     background: #CCC;
     height: 450px;
