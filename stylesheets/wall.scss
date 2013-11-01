@@ -164,8 +164,6 @@
     }
   }
   .sharing {
-    @include breakpoint($bigphone) {
-      display:none;
-    }
+    display:none;
   }
 }
