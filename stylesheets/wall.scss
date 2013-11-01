@@ -132,15 +132,15 @@
       .caption {
         img.avatar {
           display: block;
-          width:40px;
-          height:40px;
-          margin:0px 12px 0 0;
+          width:30px;
+          height:30px;
           float: left;
           border: $wall-item-image-border;
-          margin:0px 6px 6px 0;
+          margin-right: 5px;
         }
 
         span.username {
+          font-size: 70%;
           font-weight: bold;
           display: block;
           line-height:40px;
