@@ -49,14 +49,14 @@ $menu-item-active-border:         none;
 
 $menu-item-hover-background:      $menu-item-background;
 $menu-item-hover-color:           $menu-item-color;
-$menu-item-hover-text-shadow:     $menu-item-text-shadow;
+$menu-item-hover-text-shadow:     none;
 $menu-item-hover-border:          $menu-item-border;
 
 // WALL ITEMS
 $wall-item-width:                 200px;
 $wall-item-margin:                10px 0;
 $wall-item-padding:               10px; // single value
-$wall-item-shadow:                0 0 4px rgba(0,0,0,.3);
+$wall-item-shadow:                none;
 $wall-item-image-border:          1px solid #e2e2e2; // used for asset AND avatar
 $wall-item-color:                 #797f7f;
 
