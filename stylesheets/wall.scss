@@ -45,6 +45,7 @@
   margin: $wall-item-margin;
   overflow: hidden;
   visibility: hidden;
+  text-transform: lowercase;
   @include box-shadow($wall-item-shadow);
 
 
