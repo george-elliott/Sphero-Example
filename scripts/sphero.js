@@ -78,7 +78,7 @@
         if(shortcut) this.openLightbox({ album: Display.albums.recent, asset: shortcut }, 'recent');
 
         Display.hub.setActiveTab('recent');
-
+        this.winnerWall.$el.hide();
         if(this.rendered['recent']) return;
 
         Display.collections.recent.fetch({ remove: false });
@@ -90,7 +90,7 @@
         if(shortcut) this.openLightbox({ album: Display.albums.recent, asset: shortcut }, 'popular');
 
         Display.hub.setActiveTab('popular');
-
+        this.winnerWall.$el.show();
         if(this.rendered['popular']) return;
 
         Display.collections.popular.fetch({ remove: false });
@@ -103,6 +103,7 @@
         if(shortcut) this.openLightbox({ album: Display.albums.picks, asset: shortcut }, 'picks');
 
         Display.hub.setActiveTab('picks');
+        this.winnerWall.$el.hide();
 
         if(this.rendered['picks']) return;
 
