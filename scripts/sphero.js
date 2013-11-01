@@ -45,6 +45,21 @@
       },
 
       rendered: {},
+      winnerWall: null,
+
+      initialize: function() {
+        this.winnerWall = new Wall({
+          container: '.winners',
+          collection: Display.collections.winners,
+          name: 'winners',
+          masonry : {
+            gutter: 10
+          }
+        });
+
+        this.winnerWall.render();
+        this.winnerWall.$el.find('.load-more').hide();
+      },
 
       openLightbox: function(options, page) {
         var asset = new Chute.Models.Asset(null, options);
@@ -79,6 +94,7 @@
         if(this.rendered['popular']) return;
 
         Display.collections.popular.fetch({ remove: false });
+        Display.collections.winners.fetch({ remove: false });
 
         this.rendered['popular'] = true;
       },
