@@ -41,4 +41,4 @@ var Display = {
   }
 };
 
-var BASE = Display.base = /localhost/.test(location.href) ? '' : '//static.getchute.com/displays/<%= name %>/<%= env %>/<%= version %>';
+var BASE = Display.base = /localhost/.test(location.href) ? '' : '//static.getchute.com/displays/<%= name %>/production/<%= version %>';
