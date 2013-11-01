@@ -8,7 +8,7 @@ var PopularTab = Chute.View.extend({
 
   setupWall: function() {
     this.wall = new Wall({
-      parent: this,
+      container: '.popular',
       collection: Display.collections.popular,
       name: 'popular',
       masonry: {
