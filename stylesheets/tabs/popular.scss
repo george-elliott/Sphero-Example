@@ -1,5 +1,11 @@
-.winners .meta {
-  display:none;
+.winners {
+  .meta {
+    display:none;
+  }
+  .asset {
+    width: auto;
+    height: auto;
+  }
 }
 
 .tab.popular {
