@@ -2,7 +2,7 @@
 
   .voting {
     text-align: center;
-    .vote {
+    .vote, .thanks {
       display: none;
       background: #fff;
       border: 1px solid rgba(0, 0, 0, .1);
@@ -14,7 +14,12 @@
       }
     }
     .thanks {
-      display: none
+      display: none;
+      background: rgb(0, 159, 221);
+      border: none;
+      p {
+        color: #fff;
+      }
     }
   }
   .meta {

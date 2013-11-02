@@ -2,6 +2,8 @@ var ItemView = Chute.View.extend({
   template: JST['item_view'],
   bindings: {
     'like': '.voting',
+    'vote': '.voting .vote',
+    'thanks': '.voting .thanks',
     'hearts': 'span.likes-number',
     'asset': '.asset',
     'image': '.asset img',
@@ -28,9 +30,9 @@ var ItemView = Chute.View.extend({
 
       if (!isLightbox) {
         this.$el.hover(_.bind(function() {
-          this.bindings.like.find('.vote').slideDown();
+          this.bindings.vote.slideDown();
         }, this), _.bind(function() {
-          this.bindings.like.find('.vote').slideUp();
+          this.bindings.vote.slideUp();
         }, this));
       }
       if(this.model.get("type") == 'video' && (isLightbox || detect.isMobile())) {
@@ -111,7 +113,8 @@ var ItemView = Chute.View.extend({
   },
   vote: function() {
     var event;
-
+    this.bindings.vote.hide();
+    this.bindings.thanks.show();
     if(this.bindings.like.hasClass('active')) {
       this.model.unheart();
       event = 'Unliked';
@@ -121,6 +124,7 @@ var ItemView = Chute.View.extend({
     }
 
     this.bindings.like.toggleClass('active');
+    this.bindings.thanks.slideUp(1000);
     analytics.track(event + ' an asset', {
       asset: this.model.get('shortcut'),
       url: this.model.get('url')
