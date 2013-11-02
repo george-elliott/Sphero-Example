@@ -1,14 +1,14 @@
 var ItemView = Chute.View.extend({
   template: JST['item_view'],
   bindings: {
-    'like': 'div.like',
+    'like': '.voting',
     'hearts': 'span.likes-number',
     'asset': '.asset',
     'image': '.asset img',
-    'video': '.asset video'
+    'video': '.asset video',
   },
   events: {
-    'click .like': 'like',
+    'click .vote': 'vote',
     'click div.sharing a': 'trackSharing'
   },
   append: false,
@@ -26,6 +26,13 @@ var ItemView = Chute.View.extend({
     this.listenTo(this, 'render', _.bind(function() {
       var isLightbox = $(this.container).hasClass("lightbox");
 
+      if (!isLightbox) {
+        this.$el.hover(_.bind(function() {
+          this.bindings.like.find('.vote').slideDown();
+        }, this), _.bind(function() {
+          this.bindings.like.find('.vote').slideUp();
+        }, this));
+      }
       if(this.model.get("type") == 'video' && (isLightbox || detect.isMobile())) {
         try {
           this.video = videojs('video-' + this.model.get('id'), {
@@ -101,9 +108,8 @@ var ItemView = Chute.View.extend({
       pinterest_share_url: share.pinterest,
       tumblr_share_url: share.tumblr
     });
-
   },
-  like: function() {
+  vote: function() {
     var event;
 
     if(this.bindings.like.hasClass('active')) {

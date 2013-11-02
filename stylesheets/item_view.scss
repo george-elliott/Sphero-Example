@@ -1,4 +1,22 @@
 .chute-asset {
+
+  .voting {
+    text-align: center;
+    .vote {
+      display: none;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, .1);
+      border-bottom: none;
+      p {
+        font-size: 80%;
+        margin: 0;
+        padding: 3px;
+      }
+    }
+    .thanks {
+      display: none
+    }
+  }
   .meta {
     margin: 12px 0 18px;
 

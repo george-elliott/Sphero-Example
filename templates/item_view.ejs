@@ -1,4 +1,8 @@
 <div class="chute-asset <%= type %>">
+  <div class="voting">
+    <div class="vote"><p>Vote For This!</p></div>
+    <div class="thanks"><p>Thanks</p></div>
+  </div>
   <div class="asset-container">
     <div class="asset">
       <img src="<%= url %>/<%= size %>">
@@ -13,7 +17,7 @@
 
   <div class="meta clearfix">
     <div class="caption">
-      <div class="like <% if(this.model.hearted()) { %>active<% } %>">
+      <div class="like">
         <span class="text">
           <span class="likes-number"><%= hearts %></span>
           <span>Votes</span>
