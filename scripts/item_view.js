@@ -29,11 +29,11 @@ var ItemView = Chute.View.extend({
       var isLightbox = $(this.container).hasClass("lightbox");
 
       if (!isLightbox) {
-        this.$el.hover(_.bind(function() {
+        this.$el.hover(_.debounce(_.bind(function() {
           this.bindings.vote.slideDown();
-        }, this), _.bind(function() {
+        }, this), 500, true), _.debounce(_.bind(function() {
           this.bindings.vote.slideUp();
-        }, this));
+        }, this), 500, true));
       }
       if(this.model.get("type") == 'video' && (isLightbox || detect.isMobile())) {
         try {
