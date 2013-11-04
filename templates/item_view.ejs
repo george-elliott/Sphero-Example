@@ -5,8 +5,9 @@
   </div>
   <div class="asset-container">
     <div class="asset">
-      <img src="<%= url %>/<%= size %>">
+      <img class="image" src="<%= url %>/<%= size %>">
       <% if(typeof video_url !== 'undefined') { %>
+        <img class="play" src="images/play.png" />
         <video id="video-<%= video.id %>" poster="<%= url %>/<%= size %>" class="video-js vjs-default-skin" width="<%= video.width %>" height="<%= video.height %>">
           <source src="<%= video_url %>" type="video/mp4">
         </video>
