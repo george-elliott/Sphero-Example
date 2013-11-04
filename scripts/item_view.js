@@ -107,6 +107,9 @@ var ItemView = Chute.View.extend({
         title: 'You\'ve Got Tricks with Balls',
         redirect: 'http://www.getchute.com/close.html', // closes the window
         appId: '143143919079785' // chute fb
+      },
+      twitter: {
+        text: 'Show us what you can do with Sphero to win a Sphero 2.0 and custom trick pack. '
       }
     }).generate();
 
