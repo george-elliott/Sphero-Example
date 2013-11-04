@@ -50,6 +50,35 @@
       color: $lightbox-color;
       line-height: $line-height;
       font-size:$font-size;
+      .voting {
+        text-align: center;
+        .vote, .thanks {
+          position: absolute;
+          top: 75%;
+          width: 100%;
+          z-index: 100;
+          display: none;
+          background: #fff;
+          border: 1px solid rgba(0, 0, 0, .1);
+          border-bottom: none;
+          p {
+            font-size: 80%;
+            margin: 0;
+            padding: 3px;
+          }
+        }
+        .vote:hover {
+          background: rgb(235, 235, 235);
+        }
+        .thanks {
+          display: none;
+          background: url(images/check.png) 60% 50% no-repeat rgb(0, 159, 221);
+          border: none;
+          p {
+            color: #fff;
+          }
+        }
+      }
       .asset {
         min-height:100px;
         nav {

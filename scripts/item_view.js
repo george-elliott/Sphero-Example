@@ -27,10 +27,11 @@ var ItemView = Chute.View.extend({
 
     this.listenTo(this, 'render', _.bind(function() {
       var isLightbox = $(this.container).hasClass("lightbox");
-
-      if (!isLightbox && !$(this).closest('.picks')) {
+      if (!$(this.el).closest('.picks').length) {
         this.$el.hover(_.debounce(_.bind(function() {
-          this.bindings.vote.slideDown();
+          if (!this.isHearted) {
+            this.bindings.vote.slideDown();
+          }
         }, this), 500, true), _.debounce(_.bind(function() {
           this.bindings.vote.slideUp();
         }, this), 500, true));
@@ -120,6 +121,7 @@ var ItemView = Chute.View.extend({
       event = 'Unliked';
     } else {
       this.model.heart();
+      this.isHearted = true;
       event = 'Liked';
     }
 
