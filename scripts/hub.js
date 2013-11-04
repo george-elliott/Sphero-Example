@@ -37,7 +37,6 @@ var Hub = Chute.View.extend({
       if ( window.self !== window.top ) {
         $("body").css('overflow','hidden');
       }
-      fb.autoGrow();
     }, this));
   },
   upload: function() {

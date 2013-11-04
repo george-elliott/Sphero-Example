@@ -50,6 +50,7 @@
       color: $lightbox-color;
       line-height: $line-height;
       font-size:$font-size;
+      max-width: $lightbox-max-width;
       .voting {
         text-align: center;
         position:relative;

@@ -1,5 +1,5 @@
 .tab.picks {
-  img.play {
+  .play {
     display: block;
     width: 20%;
     height: 20%;
@@ -7,6 +7,8 @@
     position: absolute;
     top: 45%;
     left: 45%;
+    background:url('images/play.png') no-repeat center;
+    background-size:contain;
   }
   .meta {
     display:none;

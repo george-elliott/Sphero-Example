@@ -2,6 +2,7 @@ var fb = {
   isInit: false,
   init: function() {
     if(Display.facebook.appId) {
+      this.isInit = true;
       window.fbAsyncInit = _.bind(function() {
         // init the FB JS SDK
         FB.init({
@@ -9,9 +10,9 @@ var fb = {
           status     : true,                                 // Check Facebook Login status
           xfbml      : true                                 // Look for social plugins on the page
         });
+        FB.Canvas.setAutoGrow(100);
 
         // Additional initialization code such as adding Event Listeners goes here
-        this.isInit = true;
       }, this);
       // Load the SDK asynchronously
       (function(d, s, id){
@@ -36,9 +37,12 @@ var fb = {
     }
   },
   autoGrow: function() {
+    console.log('autogrow attempt');
     if(!this.isInit) return;
+    console.log('autogrow');
     if(typeof FB !== 'undefined' && FB !== null)  {
-      FB.Canvas.setAutoGrow(300);
+      FB.Canvas.setAutoGrow(100);
+      console.log('autogrow called');
     } else {
       setTimeout(this.autoGrow, 300);
     }
