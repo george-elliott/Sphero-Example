@@ -52,19 +52,23 @@
       font-size:$font-size;
       .voting {
         text-align: center;
+        position:relative;
+        top:0;
         .vote, .thanks {
-          position: absolute;
-          top: 75%;
+          position: relative;
+          top: 0px;
           width: 100%;
           z-index: 100;
+          height:35px;
+          line-height:35px;
           display: block;
           background: #fff;
-          border: 1px solid rgba(0, 0, 0, .1);
-          border-bottom: none;
+          border-bottom: 1px solid rgba(0, 0, 0, .1);
+          font-weight:bold;
           p {
             font-size: 80%;
             margin: 0;
-            padding: 3px;
+            padding: 0px;
           }
         }
         .vote:hover {
@@ -175,7 +179,9 @@
           }
         }
       }
-
+      .like {
+        display:none;
+      }
       .asset-container {
         background-color: $lightbox-asset-background;
         padding: $lightbox-padding;

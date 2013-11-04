@@ -144,10 +144,13 @@
         }
 
         span.username {
-          font-size: 70%;
+          font-size: 12px;
           font-weight: bold;
-          display: block;
-          line-height:40px;
+          display: inline-block;
+          line-height: 30px;
+          width: 89px;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
 
         p {

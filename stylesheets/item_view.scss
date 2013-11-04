@@ -1,7 +1,13 @@
 .chute-asset {
 
   .voting {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
     text-align: center;
+    z-index: 10;
+
     .vote, .thanks {
       cursor:pointer;
       display: none;
@@ -65,7 +71,7 @@
     cursor: pointer;
     width: 45px;
     height: 36px;
-    margin-top: 10px;
+    margin-top: 5px;
     float: right;
     text-align:center;
     .text {
