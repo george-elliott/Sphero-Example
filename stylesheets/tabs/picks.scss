@@ -1,5 +1,18 @@
 .tab.picks {
   img.play {
     display: block;
+    width: 20%;
+    height: 20%;
+    border: none;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+  }
+  .meta {
+    display:none;
+  }
+  .asset {
+    width: auto;
+    height: auto;
   }
 } 
