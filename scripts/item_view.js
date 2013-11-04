@@ -27,13 +27,10 @@ var ItemView = Chute.View.extend({
 
     this.listenTo(this, 'render', _.bind(function() {
       this.isLightbox = $(this.container).hasClass("lightbox");
-      var album = (typeof this.model.collection === 'undefined') ? this.model.options.album : this.model.collection.options.album;
-
-      if (this.isLightbox && (album === Display.albums.picks)) {
+      if (!Display.hub.activeTab === 'recent') {
         this.bindings.like.hide();
       }
-
-      if (!this.isLightbox && !$(this.el).closest('.picks').length) {
+      if (!this.isLightbox && Display.hub.activeTab === 'recent') {
         this.$el.hover(_.debounce(_.bind(function() {
           if (!this.isHearted) {
             this.bindings.vote.slideDown();

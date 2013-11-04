@@ -32,9 +32,10 @@ var Display = {
         Chute.setApp(Display.mediachooser.clientId);
       }
       
-      _.each(Display.albums, function(shortcut, name){
-        Display.collections[name] = new Chute.API.Assets(null, { album: shortcut, per_page: 20 });
-      });
+      Display.collections.picks = new Chute.API.Assets(null, { album: Display.albums.picks, per_page: 20 });
+      Display.collections.winners = new Chute.API.Assets(null, { album: Display.albums.winners, per_page: 20 });
+      Display.collections.recent = new Chute.API.Assets(null, { album: Display.albums.recent, per_page: 20 });
+      Display.collections.popular = new Chute.API.Assets(null, { album: Display.albums.popular, per_page: 20, sort: 'votes' });
       
       Chute.Display.requires(Display.dependencies, done);
     });
