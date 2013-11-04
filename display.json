@@ -39,10 +39,10 @@
     "environments": {
         "production": {
             "albums": {
-                "recent": "aiX9aujw",
-                "popular": "aiX9aujw",
-                "picks": "aqiIynkd",
-                "winners": "aqmKglpe"
+                "recent": "aqeXmiqs",
+                "popular": "aqeXmiqs",
+                "picks": "aqtShekr",
+                "winners": "aqeYrwdm"
             }
         }
     }

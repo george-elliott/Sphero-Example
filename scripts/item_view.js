@@ -7,7 +7,7 @@ var ItemView = Chute.View.extend({
     'hearts': 'span.likes-number',
     'asset': '.asset',
     'image': '.asset img',
-    'video': '.asset video',
+    'video': '.asset video'
   },
   events: {
     'click .vote': 'vote',
@@ -27,9 +27,10 @@ var ItemView = Chute.View.extend({
 
     this.listenTo(this, 'render', _.bind(function() {
       this.isLightbox = $(this.container).hasClass("lightbox");
-      if (!Display.hub.activeTab === 'recent') {
+      if (Display.hub.activeTab !== 'recent') {
         this.bindings.like.hide();
       }
+
       if (!this.isLightbox && Display.hub.activeTab === 'recent') {
         this.$el.hover(_.debounce(_.bind(function() {
           if (!this.isHearted) {
@@ -39,6 +40,7 @@ var ItemView = Chute.View.extend({
           this.bindings.vote.slideUp();
         }, this), 500, true));
       }
+
       if(this.model.get("type") == 'video' && (this.isLightbox || detect.isMobile())) {
         try {
           this.video = videojs('video-' + this.model.get('id'), {
