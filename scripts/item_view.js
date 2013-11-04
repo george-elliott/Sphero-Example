@@ -28,7 +28,7 @@ var ItemView = Chute.View.extend({
     this.listenTo(this, 'render', _.bind(function() {
       var isLightbox = $(this.container).hasClass("lightbox");
 
-      if (!isLightbox) {
+      if (!isLightbox && !$(this).closest('.picks')) {
         this.$el.hover(_.debounce(_.bind(function() {
           this.bindings.vote.slideDown();
         }, this), 500, true), _.debounce(_.bind(function() {
