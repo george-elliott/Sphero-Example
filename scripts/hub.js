@@ -70,14 +70,19 @@ var Hub = Chute.View.extend({
           }, {
             type: "checkbox",
             name: "newsletter",
-            label: "Yes! I'd like to join the Sphero newsletter! (<a href=\"http://www.gosphero.com/privacy/\" target=\"_blank\" style=\"color:black;text-decoration:underline;\">Privacy Policy</a>)",
+            label: "Yes! I'd like to join the Sphero newsletter!",
+            required: false
+          }, {
+            type: "checkbox",
+            name: "privacy",
+            label: "Yes I have read and agree to the privacy policy: (<a href=\"http://www.gosphero.com/privacy/\" target=\"_blank\" style=\"color:black;text-decoration:underline;\">Privacy Policy</a>)",
             required: true
           }]
         },
         selector: {
           title : "Select Your Photos",
           next : "Next",
-          services : ["upload", "facebook", "flickr", "google", "instagram"]
+          services : ["instagram", "twitter"]
         },
         thanks : {
           title : "Thank you",
