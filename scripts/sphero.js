@@ -80,11 +80,15 @@
 
         Display.hub.setActiveTab('recent');
         $('.popular-extra').hide();
-        if(this.rendered['recent']) return;
 
-        Display.collections.recent.fetch({ remove: false });
+        if(!this.rendered['recent']) {
+          Display.collections.recent.fetch({ remove: false });
+          this.rendered['recent'] = true;
+        }
 
-        this.rendered['recent'] = true;
+        // make sure the gallery is layed out properly
+        Display.tabs.recent.wall.$el.masonry();
+
       },
 
       popular: function(shortcut) {
@@ -92,12 +96,16 @@
 
         Display.hub.setActiveTab('popular');
         $('.popular-extra').show();
-        if(this.rendered['popular']) return;
+        if(!this.rendered['popular']) {
 
         Display.collections.popular.fetch({ remove: false });
         Display.collections.winners.fetch({ remove: false });
-
         this.rendered['popular'] = true;
+
+        }
+        // make sure the gallery is layed out properly
+        Display.tabs.popular.wall.$el.masonry();
+
       },
 
       picks: function(shortcut) {
@@ -106,11 +114,14 @@
         Display.hub.setActiveTab('picks');
         $('.popular-extra').hide();
 
-        if(this.rendered['picks']) return;
+        if(!this.rendered['picks']) {
 
-        Display.collections.picks.fetch({ remove: false });
+         Display.collections.picks.fetch({ remove: false });
+          this.rendered['picks'] = true;
+        }
 
-        this.rendered['picks'] = true;
+        // make sure the gallery is layed out properly
+        Display.tabs.picks.wall.$el.masonry();
       },
 
       terms: function() {
