@@ -26,8 +26,9 @@ var ItemView = Chute.View.extend({
     };
 
     this.listenTo(this, 'render', _.bind(function() {
-      var isLightbox = $(this.container).hasClass("lightbox");
-      if (!$(this.el).closest('.picks').length) {
+      this.isLightbox = $(this.container).hasClass("lightbox");
+
+      if (!this.isLightbox && !$(this.el).closest('.picks').length) {
         this.$el.hover(_.debounce(_.bind(function() {
           if (!this.isHearted) {
             this.bindings.vote.slideDown();
@@ -36,7 +37,7 @@ var ItemView = Chute.View.extend({
           this.bindings.vote.slideUp();
         }, this), 500, true));
       }
-      if(this.model.get("type") == 'video' && (isLightbox || detect.isMobile())) {
+      if(this.model.get("type") == 'video' && (this.isLightbox || detect.isMobile())) {
         try {
           this.video = videojs('video-' + this.model.get('id'), {
             controls: true,
@@ -124,9 +125,8 @@ var ItemView = Chute.View.extend({
       this.isHearted = true;
       event = 'Liked';
     }
-
     this.bindings.like.toggleClass('active');
-    this.bindings.thanks.slideUp(1000);
+    if (!this.isLightbox) { this.bindings.thanks.slideUp(1000); }
     analytics.track(event + ' an asset', {
       asset: this.model.get('shortcut'),
       url: this.model.get('url')
