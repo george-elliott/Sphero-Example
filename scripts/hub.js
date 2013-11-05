@@ -45,7 +45,7 @@ var Hub = Chute.View.extend({
     var chooser = new Chute.Chooser({
       client_id: Display.mediachooser.clientId,
       album: Display.mediachooser.album,
-      steps: ['profile', 'selector'],
+      steps: ['profile', 'privacy', 'selector'],
       stepOptions: {
         profile: {
           title : "Profile",
@@ -72,12 +72,12 @@ var Hub = Chute.View.extend({
             name: "newsletter",
             label: "Yes! I'd like to join the Sphero newsletter!",
             required: false
-          }, {
-            type: "checkbox",
-            name: "privacy",
-            label: "Yes I have read and agree to the privacy policy:", 
-            required: false
           }]
+        },
+        privacy: {
+          title: "Please read and agree to the privacy policy",
+          next: "I Agree",
+          template: "<a href=\"http://www.gosphero.com/privacy/\" target=\"_blank\" style=\"color:black;text-decoration:underline;\">Privacy Policy</a>",
         },
         selector: {
           title : "Select Your Videos",
