@@ -25,7 +25,7 @@
         "display/masonry",
         "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css",
         "//vjs.zencdn.net/4.1/video-js.css",
-        "//static.getchute.com/js/chute.chooser.js"
+        "//static.getchute.com/js/chute.chooser/1/chute.chooser-1.0.js"
     ],
     
     "s3": {

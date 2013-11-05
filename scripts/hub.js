@@ -45,10 +45,11 @@ var Hub = Chute.View.extend({
     var chooser = new Chute.Chooser({
       client_id: Display.mediachooser.clientId,
       album: Display.mediachooser.album,
-      steps: ['customProfile', 'selector', 'thanks'],
+      steps: ['profile', 'selector', 'thanks'],
       stepOptions: {
-        customProfile: {
+        profile: {
           title : "Profile",
+          template: SpheroChooser.Templates.customProfile({}),
           next : "Next",
           fields: [{
             type: "text",
@@ -62,7 +63,7 @@ var Hub = Chute.View.extend({
             required: true,
             match: "^([^@\\s]+)@((?:[-a-z0-9]+\\.)+[a-z]{2,})$"
           }, {
-            type: "dob",
+            type: "text",
             name: "dob",
             label: "Date of Birth",
             required: true,
@@ -75,7 +76,8 @@ var Hub = Chute.View.extend({
           }, {
             type: "checkbox",
             name: "privacy",
-            label: "Yes I have read and agree to the privacy policy: (<a href=\"http://www.gosphero.com/privacy/\" target=\"_blank\" style=\"color:black;text-decoration:underline;\">Privacy Policy</a>)",
+            label: "Yes I have read and agree to the privacy policy:", 
+            template: "<a href=\"http://www.gosphero.com/privacy/\" target=\"_blank\" style=\"color:black;text-decoration:underline;\">Privacy Policy</a>",
             required: true
           }]
         },
@@ -91,10 +93,7 @@ var Hub = Chute.View.extend({
         }
       }
     });
-    // add a customized step
-    chooser.step('customProfile', { template: SpheroChooser.Templates.customProfile({}), data: { title: "Profile", next: "Next" } });
-
-
+    
     chooser.on('before:media:submission', function(data, done) {
       _.each(data.media, function(asset) {
         if (asset.account_username === '') {
