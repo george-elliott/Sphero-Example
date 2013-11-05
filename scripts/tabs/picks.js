@@ -7,7 +7,7 @@ var PicksTab = Chute.View.extend({
   },
 
   setupWall: function() {
-    /*this.wall = new Wall({
+    this.wall = new Wall({
       parent: this,
       collection: Display.collections.picks,
       name: 'picks',
@@ -16,11 +16,11 @@ var PicksTab = Chute.View.extend({
       }
     });
 
-    this.wall.render();*/
+    this.wall.render();
   },
 
   remove: function() {
-//    this.wall.destroy();
-//    delete this.wall;
+   this.wall.destroy();
+   delete this.wall;
   }
 });

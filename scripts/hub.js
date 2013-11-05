@@ -63,10 +63,10 @@ var Hub = Chute.View.extend({
             match: "^([^@\\s]+)@((?:[-a-z0-9]+\\.)+[a-z]{2,})$"
           }, {
             type: "text",
-            name: "dob",
-            label: "Date of Birth (YYYY-MM-DD)",
+            name: "Date of Birth",
+            label: "Date of Birth (MM-DD-YYYY)",
             required: true,
-            match: "^([0-9]){4}-([0-9]){1,2}-([0-9]){1,2}$"
+            match: "^([0-9]){1,2}-([0-9]){1,2}-([0-9]){4}$"
           }, {
             type: "checkbox",
             name: "newsletter",
@@ -82,7 +82,7 @@ var Hub = Chute.View.extend({
         selector: {
           title : "Select Your Photos",
           next : "Next",
-          services : ["instagram", "twitter"]
+          services : ["upload", "instagram", "twitter"]
         },
         thanks : {
           title : "Thank you",
@@ -90,24 +90,6 @@ var Hub = Chute.View.extend({
           text : "Thank you! Your photos have been successfully uploaded."
         }
       }
-    });
-    
-    chooser.on('before:media:submission', function(data, done) {
-      _.each(data.media, function(asset) {
-        if (asset.account_username === '') {
-          asset.account_username = data.profile.name;
-          delete asset.account_shortcut;
-        }
-      });
-      done(data);
-    });
-
-    chooser.on('complete', function(response){
-      chooser.goToStep('thanks');
-    });
-
-    chooser.on('before:thanks:change', function() {
-      chooser.close();
     });
 
     chooser.show();
