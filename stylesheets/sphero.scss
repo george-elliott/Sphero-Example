@@ -250,3 +250,8 @@
 }
 
 @import "lightbox.scss";
+
+
+.chute-chooser.chute-chooser-mode-lightbox.chute-chooser-open {
+  top:100px !important;
+}

@@ -45,7 +45,7 @@ var Hub = Chute.View.extend({
     var chooser = new Chute.Chooser({
       client_id: Display.mediachooser.clientId,
       album: Display.mediachooser.album,
-      steps: ['profile', 'selector', 'thanks'],
+      steps: ['profile', 'selector'],
       stepOptions: {
         profile: {
           title : "Profile",
@@ -90,6 +90,15 @@ var Hub = Chute.View.extend({
           text : "Thank you! Your videos have been successfully uploaded."
         }
       }
+    });
+
+    chooser.on('complete', function(data){
+      chooser.goToStep('thanks')
+    });
+
+
+    chooser.on('on:thanks:complete', function(data){
+      chooser.close();
     });
 
     chooser.show();
