@@ -49,7 +49,6 @@ var Hub = Chute.View.extend({
       stepOptions: {
         profile: {
           title : "Profile",
-          template: SpheroChooser.Templates.customProfile({}),
           next : "Next",
           fields: [{
             type: "text",
@@ -65,7 +64,7 @@ var Hub = Chute.View.extend({
           }, {
             type: "text",
             name: "dob",
-            label: "Date of Birth",
+            label: "Date of Birth (YYYY-MM-DD)",
             required: true,
             match: "^([0-9]){4}-([0-9]){1,2}-([0-9]){1,2}$"
           }, {
@@ -77,8 +76,7 @@ var Hub = Chute.View.extend({
             type: "checkbox",
             name: "privacy",
             label: "Yes I have read and agree to the privacy policy:", 
-            template: "<a href=\"http://www.gosphero.com/privacy/\" target=\"_blank\" style=\"color:black;text-decoration:underline;\">Privacy Policy</a>",
-            required: true
+            required: false
           }]
         },
         selector: {
