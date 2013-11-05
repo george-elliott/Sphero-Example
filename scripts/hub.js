@@ -80,14 +80,14 @@ var Hub = Chute.View.extend({
           }]
         },
         selector: {
-          title : "Select Your Photos",
+          title : "Select Your Videos",
           next : "Next",
           services : ["upload", "instagram", "twitter"]
         },
         thanks : {
           title : "Thank you",
           next : "Done",
-          text : "Thank you! Your photos have been successfully uploaded."
+          text : "Thank you! Your videos have been successfully uploaded."
         }
       }
     });

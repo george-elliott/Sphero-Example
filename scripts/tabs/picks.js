@@ -3,7 +3,7 @@ var PicksTab = Chute.View.extend({
   template: JST['tabs/picks'],
 
   initialize: function() {
-    this.listenToOnce(this, 'render', this.setupWall);
+   // this.listenToOnce(this, 'render', this.setupWall);
   },
 
   setupWall: function() {
