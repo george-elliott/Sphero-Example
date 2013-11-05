@@ -47,6 +47,13 @@ if (process.env.NODE_ENV === 'production') {
       res.end(404);
     });
   });
+
+  app.post('/', function(req, res){
+    fs.stat('./test/index.html', function(err){
+      if(! err) return res.with('./test/index.html');
+      res.end(404);
+    });
+  });
   app.use("/fonts", express.static(__dirname + '/assets/fonts'));
   app.use("/assets/images", express.static(__dirname + '/assets/images'));
 }

@@ -76,6 +76,8 @@ var Lightbox = Chute.View.extend({
 
         fb.getOffset(_.bind(function(info) {
           var offset = parseInt(info.scrollTop);
+
+          $(".lb-wrapper").css({position: 'absolute'});
           this.bindings.lightbox.css({top: offset + "px", position: 'absolute', left: '50%', 'margin-left': -(this.bindings.lightbox.outerWidth()/2) +'px'});
         }, this));
 
