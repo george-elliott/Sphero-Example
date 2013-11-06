@@ -2,11 +2,16 @@
 
   <div class="asset-container">
     <div class="asset">
-      <img class="image" src="<%= url %>/<%= size %>">
+      <img class="image" src="<% if(url) { %><%= url %>/<%= size %><% } else { %><%= thumbnail %><% } %>">
       <% if(typeof video_url !== 'undefined') { %>
         <div class="play"></div>
-        <video id="video-<%= video.id %>" poster="<%= url %>/<%= size %>" class="video-js vjs-default-skin" width="<%= video.width %>" height="<%= video.height %>">
-          <source src="<%= video_url %>" type="video/mp4">
+        <video id="video-<%= video.id %>" poster="<% if(url) { %><%= url %>/<%= size %><% } else { %><%= thumbnail %><% } %>" class="video-js vjs-default-skin" width="<%= video.width %>" height="<%= video.height %>">
+          <source src="<%= video_url || source.source_url %>" type="video/mp4">
+        </video>
+      <% } else if(typeof source.source_url !== 'undefined') { %>
+        <div class="play"></div>
+        <video id="video-<%= video.id %>" poster="<% if(url) { %><%= url %>/<%= size %><% } else { %><%= thumbnail %><% } %>" class="video-js vjs-default-skin" width="<%= video.width %>" height="<%= video.height %>">
+          <source src="<%= source.source_url %>" type="video/mp4">
         </video>
       <% } %>
     </div>
@@ -25,7 +30,7 @@
         </span>
       </div>
       <img src="<%= user.avatar %>" class="avatar">
-      <span class="username"><%= username || '' %></span>
+      <span class="username"><%= username || user.username || '' %></span>
       <p><%= caption %></p>
     </div>
   </div>

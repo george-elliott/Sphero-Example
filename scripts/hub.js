@@ -77,7 +77,7 @@ var Hub = Chute.View.extend({
         privacy: {
           title: "Please read and agree to the privacy policy",
           next: "I Agree",
-          template: "<a href=\"http://www.gosphero.com/privacy/\" target=\"_blank\" style=\"color:black;text-decoration:underline;\">Privacy Policy</a>",
+          template: "<a href=\"http://www.gosphero.com/privacy/\" target=\"_blank\" style=\"color:black;text-decoration:underline;\">Privacy Policy</a>"
         },
         selector: {
           title : "Select Your Videos",

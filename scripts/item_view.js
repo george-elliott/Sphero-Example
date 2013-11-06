@@ -26,6 +26,11 @@ var ItemView = Chute.View.extend({
     };
 
     this.listenTo(this, 'render', _.bind(function() {
+      $(this.bindings.image).error(_.bind(function(e) {
+        e.target.src = this.model.get('thumbnail');
+        this.bindings.video.poster = this.model.get('thumbnail');
+      },this));
+
       this.isLightbox = $(this.container).hasClass("lightbox");
       if (Display.hub.activeTab !== 'recent') {
         this.bindings.like.hide();
@@ -57,7 +62,7 @@ var ItemView = Chute.View.extend({
         } catch(e) {
           this.bindings.image.show();
           this.bindings.video.hide();
-          this.video.dispose();
+          //this.video.dispose();
           this.video.hide();
         }
 
