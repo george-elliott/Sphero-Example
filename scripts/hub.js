@@ -82,7 +82,7 @@ var Hub = Chute.View.extend({
         selector: {
           title : "Select Your Videos",
           next : "Next",
-          services : ["upload", "instagram", "twitter"]
+          services : ["upload"]
         },
         thanks : {
           title : "Thank you",
