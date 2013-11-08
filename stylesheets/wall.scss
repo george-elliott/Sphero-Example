@@ -46,6 +46,8 @@
   overflow: hidden;
   visibility: hidden;
   text-transform: lowercase;
+  position:absolute;
+  top:0;
   @include box-shadow($wall-item-shadow);
 
 
