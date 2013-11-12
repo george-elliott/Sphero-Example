@@ -124,6 +124,10 @@ var ItemView = Chute.View.extend({
       pinterest_share_url: share.pinterest,
       tumblr_share_url: share.tumblr
     });
+
+    this.on('remove', function() {
+      debugger
+    });
   },
   vote: function() {
     var event;
@@ -168,7 +172,7 @@ var ItemView = Chute.View.extend({
   remove: function() {
     if(this.video) {
       this.video.pause();
-      this.video.dispose();
+      this.video.dispose();  
       delete this.video;
     }
 

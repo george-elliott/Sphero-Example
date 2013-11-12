@@ -18,8 +18,8 @@ var Lightbox = Chute.View.extend({
     }
   },
   events: {
-    'click': function(e) { $(e.target).hasClass('modal-bg') || $(e.target).hasClass('lightbox-wrapper') ? this.destroy() : e.stopPropagation(); },
-    'click a.close': 'destroy',
+    'click': function(e) { $(e.target).hasClass('modal-bg') || $(e.target).hasClass('lightbox-wrapper') ? this.remove() : e.stopPropagation(); },
+    'click a.close': 'remove',
     'click a.next': 'nextAsset',
     'click a.prev': 'prevAsset',
     'click div.sharing a': 'trackSharing'
@@ -189,7 +189,8 @@ var Lightbox = Chute.View.extend({
 
     // remove overflow hidden
     $('body, html').css('overflow', '');
-
+    this.asset.video.dispose();
+    
     analytics.track('Time in lightbox', {
       time: ((new Date().getTime() - this.timestamp) / 1000).toFixed(2)
     });
