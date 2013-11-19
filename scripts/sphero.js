@@ -12,7 +12,7 @@
     //= require utils/facebook
     //= require hub
 
-    Display.collections.popular.option('sort', 'hot');
+    Display.collections.popular.option('sort', 'hearts');
 
     Display.hub = new Hub({
       container: Display.container,

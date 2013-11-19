@@ -35,7 +35,7 @@ var Display = {
       Display.collections.picks = new Chute.API.Assets(null, { album: Display.albums.picks, per_page: 20 });
       Display.collections.winners = new Chute.API.Assets(null, { album: Display.albums.winners, per_page: 20 });
       Display.collections.recent = new Chute.API.Assets(null, { album: Display.albums.recent, per_page: 20 });
-      Display.collections.popular = new Chute.API.Assets(null, { album: Display.albums.popular, per_page: 20, sort: 'votes' });
+      Display.collections.popular = new Chute.API.Assets(null, { album: Display.albums.popular, per_page: 20, sort: 'hearts' });
       
       Chute.Display.requires(Display.dependencies, done);
     });
