@@ -1,10 +1,10 @@
 {
     "container": "div.chute-container",
     "albums": {
-        "recent": "aqeXmiqs",
-        "popular": "aqeXmiqs",
-        "picks": "aqtShekr",
-        "winners": "aqeYrwdm"
+        "recent": "",
+        "popular": "",
+        "picks": "",
+        "winners": ""
     },
     
     "analytics": {
@@ -13,11 +13,11 @@
     
     "mediachooser": {
         "clientId": "4f0b30a938ecef2020000003",
-        "album": "aquNqnbg"
+        "album": ""
     },
 
     "facebook" : {
-        "appId": "193003547552571"
+        "appId": ""
     },
     
     "dependencies": [
@@ -39,10 +39,10 @@
     "environments": {
         "production": {
             "albums": {
-                "recent": "aqeXmiqs",
-                "popular": "aqeXmiqs",
-                "picks": "aqtShekr",
-                "winners": "aqeYrwdm"
+                "recent": "",
+                "popular": "",
+                "picks": "",
+                "winners": ""
             }
         }
     }
